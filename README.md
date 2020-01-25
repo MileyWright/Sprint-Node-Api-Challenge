@@ -39,14 +39,33 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    
+    Middleware
+        Express Middleware are functions that can perform operations on the request and response. It can either move into the next middleware or return a response back to the client. 
+    Routing
+        Routing in Express is a way to select which request handler function is executed based on the URL and which HTTP method used.
 
 - [ ] Describe Middleware?
 
+        Built-In Middleware:
+            Middleware that’s included with Express, but not added to the application automatically.
+        Third-party Middleware:
+            Npm modules like cors, helmet, or morgan, that we can install and import into our application using ‘require()’
+        Custom Middleware:
+            We would write our own middleware if a package we’re looking for does not exist.
+
+
 - [ ] Describe a Resource?
+        
+    An endpoints’ url points to the location of a resource thats available on the server. For example a resource could be: users, products, orders, returns, or even clients. Each resource is accessible via a unique url. It can have multiple representations.
 
 - [ ] What can the API return to help clients know if a request was successful?
 
+    An API can send back HTTP statuses  like 200 to let the client know that the request was successful.
+
 - [ ] How can we partition our application into sub-applications?
+
+        Express Routers is a way to split an application into sub-applications to make it easier to maintain.
 
 ## Minimum Viable Product
 
