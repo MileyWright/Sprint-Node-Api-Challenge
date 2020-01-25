@@ -5,7 +5,7 @@ const projectDb = require('../data/helpers/projectModel');
 const actionDb = require('../data/helpers/actionModel');
 router.use(express.json());
 
-//  /projects
+//  /projects 
 router.get('/', (req, res) => {
     projectDb.get()
     .then(project => {
