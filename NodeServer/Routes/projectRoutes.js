@@ -41,6 +41,33 @@ router.get('/:id/actions', validateProjectId, (req, res) => {
       })
 })
 
+router.post('/', validateProject, (req, res) => {
+    const data = req.body;
+    projectDb.insert(data)
+    .then(project => {
+        res.status(200).json(project)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({errorMessage: "Could not post project data."})
+      })
+})
+
+router.post('/:id/actions', validateProjectId, validateAction, (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    actionDb.insert({...data, project_id: id})
+    .then(project => {
+        res.status(200).json(project)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({errorMessage: "Could not post project actions."})
+      })
+})
+
+
+
 //custom middleware
 function  validateProjectId(req, res, next) {
     const id = req.params.id;
