@@ -17,7 +17,29 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', validateProjectId, (req, res) => {
+    const id = req.params.id;
+    projectDb.get(id)
+    .then(project => {
+        res.status(200).json(project)
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({errorMessage: 'Could not retrieve specified ID.'})
+    })
+})
 
+router.get('/:id/actions', validateProjectId, (req, res) => {
+    const id = req.params.id;
+    projectDb.getProjectActions(id)
+    .then(project => {
+        res.status(200).json(project)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({errorMessage: "Could not retrieve projects' actions."})
+      })
+})
 
 //custom middleware
 function  validateProjectId(req, res, next) {
