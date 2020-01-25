@@ -66,7 +66,17 @@ router.post('/:id/actions', validateProjectId, validateAction, (req, res) => {
       })
 })
 
-
+router.delete('/:id', validateProjectId, (req, res) => {
+    const id = req.params.id;
+    projectDb.remove(id)
+    .then(removed => {
+        res.status(200).json(removed)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({errorMessage: "The project could not be removed."})
+      })
+})
 
 //custom middleware
 function  validateProjectId(req, res, next) {
